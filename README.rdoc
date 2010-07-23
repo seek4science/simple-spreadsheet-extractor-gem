@@ -23,9 +23,9 @@ Java 1.6 (JRE) is required.
 
 == Usage
 
-  * require 'spreadsheet-extractor'
-  * include the module SysMODB::SpreadsheetExtractor
-  * pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the sheet.
+* require 'spreadsheet-extractor'
+* include the module SysMODB::SpreadsheetExtractor
+* pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the sheet.
   
 e.g.
 
