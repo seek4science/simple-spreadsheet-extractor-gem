@@ -19,7 +19,7 @@ This is a simple tool developed for use within SysMO-DB[http://www.sysmo-db.org]
 
 Java 1.6 (JRE) is required.
 
-[sudo] gem install simple-spreadsheet-extractor
+gem install simple-spreadsheet-extractor
 
 == Usage
 
