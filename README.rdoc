@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen
-Version::    0.2.1
+Version::    0.2.2
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010 The University of Manchester, UK
@@ -23,14 +23,14 @@ Java 1.6 (JRE) is required.
 
 == Usage
 
-* require 'spreadsheet-extractor'
+* require 'simple-spreadsheet-extractor'
 * include the module SysMODB::SpreadsheetExtractor
 * pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the sheet.
   
 e.g.
 
    require 'rubygems'
-   require 'spreadsheet-extractor'
+   require 'simple-spreadsheet-extractor'
 
    include SysMODB::SpreadsheetExtractor
 

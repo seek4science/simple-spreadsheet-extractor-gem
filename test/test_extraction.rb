@@ -1,5 +1,5 @@
 require 'test/unit'
-require 'spreadsheet-extractor'
+require 'simple-spreadsheet-extractor'
 
 class TestExtraction < Test::Unit::TestCase
   
