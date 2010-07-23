@@ -32,8 +32,8 @@
 
 require 'rubygems'
 spec = Gem::Specification.new do |s|
-  s.name             = "spreadsheet-parser"
-  s.version          = "0.1"
+  s.name             = "simple-spreadsheet-extractor"
+  s.version          = "0.2"
   s.author           = "Stuart Owen"
   s.email            = "stuart.owen@manchester.ac.uk"
   s.homepage         = "http://www.sysmo-db.org"
