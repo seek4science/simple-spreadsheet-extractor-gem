@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen
-Version::    0.2.2
+Version::    0.2.3
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010 The University of Manchester, UK
@@ -26,6 +26,7 @@ Java 1.6 (JRE) is required.
 * require 'simple-spreadsheet-extractor'
 * include the module SysMODB::SpreadsheetExtractor
 * pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the sheet.
+* if something goes wrong with the extraction then a SysMODB::SpreadsheetExtractionException will be thrown
   
 e.g.
 
@@ -35,4 +36,8 @@ e.g.
    include SysMODB::SpreadsheetExtractor
 
    f=open("/tmp/test-spreadsheet.xls")
-   puts spreadsheet_to_xml f
+   begin
+   	   puts spreadsheet_to_xml f
+   rescue SysMODB::SpreadsheetExtractionException=>e
+       puts "Something went wrong #{e.message}"
+   end

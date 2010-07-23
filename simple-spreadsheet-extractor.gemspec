@@ -33,7 +33,7 @@
 require 'rubygems'
 spec = Gem::Specification.new do |s|
   s.name             = "simple-spreadsheet-extractor"
-  s.version          = "0.2.2"
+  s.version          = "0.2.3"
   s.author           = "Stuart Owen"
   s.email            = "stuart.owen@manchester.ac.uk"
   s.homepage         = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
@@ -42,8 +42,9 @@ spec = Gem::Specification.new do |s|
   s.description      = "Takes a stream to a spreadsheet file and produces and XML representation of its contents"
   candidates         = Dir.glob("{bin,lib,jars}/**/*")
   s.files            = candidates.delete_if {|item| item.include?("rdoc")}
-  s.require_path     = "lib"
+  s.require_path     = "lib"  
   #s.test_file        = ""
   s.has_rdoc         = false
   s.extra_rdoc_files = ["README.rdoc", "LICENCE"]
+  s.add_dependency("open4","1.0.1")
 end
