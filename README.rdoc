@@ -9,7 +9,7 @@ Copyright::  (c) 2010 The University of Manchester, UK
 
 == Synopsis
 
-This is a simple gem that provides a facility to read and XLS or XLSX spreadsheet and produce an XML representation of its contents
+This is a simple gem that provides a facility to read an XLS or XLSX Excel spreadsheet document and produce an XML representation of its content.
 
 Internally it uses Apache POI, using the sister [http://github.com/myGrid/simple-spreadsheet-extractor] tool.
 
