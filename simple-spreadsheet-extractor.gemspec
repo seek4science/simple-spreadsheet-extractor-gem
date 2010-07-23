@@ -33,10 +33,10 @@
 require 'rubygems'
 spec = Gem::Specification.new do |s|
   s.name             = "simple-spreadsheet-extractor"
-  s.version          = "0.2"
+  s.version          = "0.2.1"
   s.author           = "Stuart Owen"
   s.email            = "stuart.owen@manchester.ac.uk"
-  s.homepage         = "http://www.sysmo-db.org"
+  s.homepage         = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
   s.platform         = Gem::Platform::RUBY
   s.summary          = "Basic spreadsheet content extraction using Apache POI"
   s.description      = "Takes a stream to a spreadsheet file and produces and XML representation of its contents"
