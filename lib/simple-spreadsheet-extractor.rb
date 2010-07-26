@@ -11,7 +11,7 @@ module SysMODB
     JAR_PATH = File.dirname(__FILE__) + "/../jars"
     
     def spreadsheet_to_xml spreadsheet_data
-      command = "java -jar #{JAR_PATH}/simple-spreadsheet-extractor-0.2.jar"
+      command = "java -jar #{JAR_PATH}/simple-spreadsheet-extractor-0.3.jar"
       output = ""
       err_message = ""
       status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
