@@ -11,7 +11,7 @@ Copyright::  (c) 2010 The University of Manchester, UK
 
 This is a simple gem that provides a facility to read an XLS or XLSX Excel spreadsheet document and produce an XML representation of its content.
 
-Internally it uses Apache POI, using the sister [http://github.com/myGrid/simple-spreadsheet-extractor] tool.
+Internally it uses Apache POI, using the sister http://github.com/myGrid/simple-spreadsheet-extractor tool.
 
 This is a simple tool developed for use within SysMO-DB[http://www.sysmo-db.org].
 
@@ -41,3 +41,36 @@ e.g.
    rescue SysMODB::SpreadsheetExtractionException=>e
        puts "Something went wrong #{e.message}"
    end
+   
+Formulas are evaluated placing the result in the XML produced for that cell, however the original formula is included as an attribute.
+
+Row and column indexes start at 1, rather than 0, to keep consistent with namings of the cells in Excel.
+
+An XSD schema for the XML is available in doc/schema-v1.xsd
+
+== Example XML
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <workbook xmlns="http://www.sysmo-db.org/2010/xml/spreadsheet">
+    <sheet name="Sheet1" index="1" hidden="false" very_hidden="false" first_row="1" last_row="5">
+      <row index="1">
+        <cell column="1" column_alpha="A" row="1" type="numeric">12.0</cell>
+        <cell column="2" column_alpha="B" row="1" type="numeric">654153.0</cell>
+        <cell column="27" column_alpha="AA" row="1" type="string">AA</cell>
+      </row>
+      <row index="2">
+        <cell column="1" column_alpha="A" row="2" type="numeric">547654.0</cell>
+      </row>
+      <row index="3">
+        <cell column="1" column_alpha="A" row="3" type="numeric">45465.0</cell>
+      </row>
+      <row index="4">
+        <cell column="1" column_alpha="A" row="4" type="numeric" formula="A1+1">13.0</cell>
+      </row>
+      <row index="5">
+        <cell column="1" column_alpha="A" row="5" type="numeric" formula="SUM(A1:A4)">593144.0</cell>
+      </row>
+    </sheet>
+    <sheet name="Sheet2" index="2" hidden="false" very_hidden="false" first_row="1" last_row="1"/>
+    <sheet name="Sheet3" index="3" hidden="false" very_hidden="false" first_row="1" last_row="1"/>
+  </workbook>
