@@ -33,7 +33,7 @@
 require 'rubygems'
 spec = Gem::Specification.new do |s|
   s.name             = "simple-spreadsheet-extractor"
-  s.version          = "0.3.0"
+  s.version          = "0.3.1"
   s.author           = "Stuart Owen"
   s.email            = "stuart.owen@manchester.ac.uk"
   s.homepage         = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
