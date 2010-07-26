@@ -39,15 +39,18 @@
 	</xsd:complexType>
 
 	<xsd:complexType name="Cell">
-    <xsd:simpleContent>
-      <xsd:extension base="xsd:string">
-        <xsd:attribute name="column" type="xsd:positiveInteger"
-			use="required"></xsd:attribute>
-		<xsd:attribute name="row" type="xsd:positiveInteger"
-			use="required"></xsd:attribute>
-		<xsd:attribute name="type" type="xsd:string" use="required"></xsd:attribute>
-      </xsd:extension>
-    </xsd:simpleContent>
-  </xsd:complexType>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="column" type="xsd:positiveInteger"
+					use="required"></xsd:attribute>
+				<xsd:attribute name="column_alpha" type="xsd:string"
+					use="required"></xsd:attribute>
+				<xsd:attribute name="row" type="xsd:positiveInteger"
+					use="required"></xsd:attribute>
+				<xsd:attribute name="type" type="xsd:string" use="required"></xsd:attribute>
+				<xsd:attribute name="formula" type="xsd:string" use="optional"></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
 
 </xsd:schema>

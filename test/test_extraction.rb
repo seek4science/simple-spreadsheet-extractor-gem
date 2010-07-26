@@ -11,7 +11,8 @@ class TestExtraction < Test::Unit::TestCase
   def test_from_file_object    
     test_sheet = File.dirname(__FILE__) + "/test-spreadsheet.xls"
     f=open(test_sheet)    
-    xml = spreadsheet_to_xml(f)   
+    xml = spreadsheet_to_xml(f)     
+    puts xml
     assert_not_nil xml      
   end
   
