@@ -19,7 +19,7 @@ This is a simple tool developed for use within SysMO-DB[http://www.sysmo-db.org]
 
 Java 1.6 (JRE) is required.
 
-gem install simple-spreadsheet-extractor
+  gem install simple-spreadsheet-extractor
 
 == Usage
 
@@ -37,9 +37,9 @@ e.g.
 
    f=open("/tmp/test-spreadsheet.xls")
    begin
-   	   puts spreadsheet_to_xml f
+     puts spreadsheet_to_xml(f)
    rescue SysMODB::SpreadsheetExtractionException=>e
-       puts "Something went wrong #{e.message}"
+     puts "Something went wrong #{e.message}"
    end
    
 Formulas are evaluated placing the result in the XML produced for that cell, however the original formula is included as an attribute.
