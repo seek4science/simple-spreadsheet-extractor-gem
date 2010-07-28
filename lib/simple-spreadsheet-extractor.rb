@@ -15,11 +15,12 @@ module SysMODB
       output = ""
       err_message = ""
       status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
-        spreadsheet_data.each_byte{|b| stdin.putc(b)}      
-        stdin.close
+      stdin=stdin.binmode
+      spreadsheet_data.each_byte{|b| stdin.putc(b)}
+      stdin.close
                      
-        output=stdout.read.strip                     
-        err_message=stderr.read.strip
+      output=stdout.read.strip                     
+      err_message=stderr.read.strip
         
       end
             
