@@ -10,7 +10,7 @@ class TestExtraction < Test::Unit::TestCase
   
   def test_from_file_object    
     test_sheet = File.dirname(__FILE__) + "/test-spreadsheet.xls"
-    f=open(test_sheet)    
+    f=open(test_sheet,"rb")    
     xml = spreadsheet_to_xml(f)     
     puts xml
     assert_not_nil xml      
@@ -18,14 +18,14 @@ class TestExtraction < Test::Unit::TestCase
   
   def test_validate_xml
     test_sheet = File.dirname(__FILE__) + "/test-spreadsheet.xls"
-    f=open(test_sheet)    
+    f=open(test_sheet,"rb")    
     xml = spreadsheet_to_xml(f)
     validate_against_schema(xml)
   end
   
   def test_failure
     test_sheet = File.dirname(__FILE__) + "/not-a-spreadsheet.xls"
-    f=open(test_sheet)
+    f=open(test_sheet,"rb")
     assert_raise SysMODB::SpreadsheetExtractionException do 
       spreadsheet_to_xml(f)      
     end
