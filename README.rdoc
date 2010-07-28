@@ -21,6 +21,10 @@ Java 1.6 (JRE) is required.
 
   gem install simple-spreadsheet-extractor
 
+Note that on Windows you must also:
+
+  gem install win32-open3
+
 == Usage
 
 * require 'simple-spreadsheet-extractor'

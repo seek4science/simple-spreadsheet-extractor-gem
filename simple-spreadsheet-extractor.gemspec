@@ -46,5 +46,5 @@ spec = Gem::Specification.new do |s|
   #s.test_file        = ""
   s.has_rdoc         = false
   s.extra_rdoc_files = ["README.rdoc", "LICENCE"]
-  s.add_dependency("popen4","0.1.2")
+  s.add_dependency("POpen4","0.1.4")
 end
