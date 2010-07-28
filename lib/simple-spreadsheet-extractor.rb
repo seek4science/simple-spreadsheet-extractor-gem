@@ -14,10 +14,8 @@ module SysMODB
       command = "java -jar #{JAR_PATH}/simple-spreadsheet-extractor-0.3.2.jar"
       output = ""
       err_message = ""
-      status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|      
-        while ((c = spreadsheet_data.getc) != nil) do        
-          stdin.putc(c)
-        end
+      status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
+        spreadsheet_data.each_byte{|b| stdin.putc(b)}      
         stdin.close
                      
         output=stdout.read.strip                     
