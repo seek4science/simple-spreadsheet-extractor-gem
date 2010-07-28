@@ -9,22 +9,21 @@ class TestExtraction < Test::Unit::TestCase
   include SysMODB::SpreadsheetExtractor
   
   def test_from_file_object    
-    test_sheet = File.dirname(__FILE__) + "/test-spreadsheet.xls"
+    test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
     f=open(test_sheet,"rb")    
     xml = spreadsheet_to_xml(f)     
-    puts xml
     assert_not_nil xml      
   end
   
   def test_validate_xml
-    test_sheet = File.dirname(__FILE__) + "/test-spreadsheet.xls"
+    test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
     f=open(test_sheet,"rb")    
     xml = spreadsheet_to_xml(f)
     validate_against_schema(xml)
   end
   
   def test_failure
-    test_sheet = File.dirname(__FILE__) + "/not-a-spreadsheet.xls"
+    test_sheet = File.dirname(__FILE__) + "/files/not-a-spreadsheet.xls"
     f=open(test_sheet,"rb")
     assert_raise SysMODB::SpreadsheetExtractionException do 
       spreadsheet_to_xml(f)      
