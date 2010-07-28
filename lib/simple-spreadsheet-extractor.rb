@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'open4'
+require 'popen4'
 
 module SysMODB
   
@@ -14,24 +14,18 @@ module SysMODB
       command = "java -jar #{JAR_PATH}/simple-spreadsheet-extractor-0.3.2.jar"
       output = ""
       err_message = ""
-      status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
+      status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
         while ((line = spreadsheet_data.gets) != nil) do        
           stdin << line
         end
         stdin.close
                      
-        while ((line = stdout.gets) != nil) do
-          output << line
-        end      
-        stdout.close
-                
-        while ((line=stderr.gets)!= nil) do
-          err_message << line
-        end
-        stderr.close
+        output=stdout.read.strip                     
+        err_message=stderr.read.strip
+        
       end
             
-      if status.to_i != 0                 
+      if status.to_i != 0                         
         raise SpreadsheetExtractionException.new(err_message)             
       end
                   

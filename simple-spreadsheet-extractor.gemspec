@@ -33,7 +33,7 @@
 require 'rubygems'
 spec = Gem::Specification.new do |s|
   s.name             = "simple-spreadsheet-extractor"
-  s.version          = "0.3.2"
+  s.version          = "0.3.3"
   s.author           = "Stuart Owen"
   s.email            = "stuart.owen@manchester.ac.uk"
   s.homepage         = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
@@ -46,5 +46,5 @@ spec = Gem::Specification.new do |s|
   #s.test_file        = ""
   s.has_rdoc         = false
   s.extra_rdoc_files = ["README.rdoc", "LICENCE"]
-  s.add_dependency("open4","1.0.1")
+  s.add_dependency("popen4","0.1.2")
 end
