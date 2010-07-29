@@ -34,12 +34,15 @@ Note that on Windows you must also do:
   
 e.g.
 
+   #example.rb - takes path, i.e. ruby example.rb /tmp/spreadsheet.xls
    require 'rubygems'
    require 'simple-spreadsheet-extractor'
 
    include SysMODB::SpreadsheetExtractor
 
-   f=open("/tmp/test-spreadsheet.xls")
+   path=ARGV.first
+
+   f=open(path)
    begin
      puts spreadsheet_to_xml(f)
    rescue SysMODB::SpreadsheetExtractionException=>e
