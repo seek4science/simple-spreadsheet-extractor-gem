@@ -48,14 +48,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<POpen4>, ["= 0.1.4"])
-      s.add_runtime_dependency(%q<sys-uname>, ["= 0.8.4"])
+      s.add_runtime_dependency(%q<open4>, ["= 1.0.1"])
     else
       s.add_dependency(%q<POpen4>, ["= 0.1.4"])
-      s.add_dependency(%q<sys-uname>, ["= 0.8.4"])
+      s.add_dependency(%q<open4>, ["= 1.0.1"])
     end
   else
     s.add_dependency(%q<POpen4>, ["= 0.1.4"])
-    s.add_dependency(%q<sys-uname>, ["= 0.8.4"])
+    s.add_dependency(%q<open4>, ["= 1.0.1"])
   end
 end
 
