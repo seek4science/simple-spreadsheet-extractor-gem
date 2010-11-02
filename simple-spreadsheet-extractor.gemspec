@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simple-spreadsheet-extractor}
-  s.version = "0.3.3"
+  s.version = "0.3.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen"]
-  s.date = %q{2010-07-29}
+  s.date = %q{2010-11-02}
   s.description = %q{Takes a stream to a spreadsheet file and produces and XML representation of its contents}
   s.email = %q{stuart.owen@manchester.ac.uk}
   s.extra_rdoc_files = [
@@ -31,13 +31,12 @@ Gem::Specification.new do |s|
      "jars/lib/xmlbeans-2.3.0.jar",
      "jars/simple-spreadsheet-extractor-0.3.2.jar",
      "lib/simple-spreadsheet-extractor.rb",
-     "simple-spreadsheet-extractor.gemspec",
-     "simple-spreadsheet-extractor.gemspec-old"
+     "simple-spreadsheet-extractor.gemspec"
   ]
   s.homepage = %q{http://github.com/myGrid/simple-spreadsheet-extractor-gem}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Basic spreadsheet content extraction using Apache POI}
   s.test_files = [
     "test/test_extraction.rb"
@@ -47,13 +46,16 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<POpen4>, ["= 0.1.4"])
+      s.add_runtime_dependency(%q<sys-uname>, ["= 0.8.4"])
     else
       s.add_dependency(%q<POpen4>, ["= 0.1.4"])
+      s.add_dependency(%q<sys-uname>, ["= 0.8.4"])
     end
   else
     s.add_dependency(%q<POpen4>, ["= 0.1.4"])
+    s.add_dependency(%q<sys-uname>, ["= 0.8.4"])
   end
 end
 

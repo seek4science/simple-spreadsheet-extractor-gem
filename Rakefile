@@ -21,6 +21,7 @@ begin
     gemspec.files.exclude "test/*"
     gemspec.extra_rdoc_files = ["README.rdoc", "LICENCE"]
     gemspec.add_dependency("POpen4","0.1.4")
+    gemspec.add_dependency("open4","1.0.1")
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
