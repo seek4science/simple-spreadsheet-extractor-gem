@@ -41,5 +41,13 @@ class TestExtraction < Test::Unit::TestCase
     end
   end
   
+  def test_for_segfault  
+    test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
+    10.times do |x|
+      f=open(test_sheet,"rb")    
+      xml = spreadsheet_to_xml(f)     
+    end    
+    true 
+  end
   
 end

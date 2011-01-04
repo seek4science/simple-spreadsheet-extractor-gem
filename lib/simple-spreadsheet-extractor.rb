@@ -10,10 +10,11 @@ module SysMODB
   
   module SpreadsheetExtractor
     
-    JAR_PATH = File.dirname(__FILE__) + "/../jars"
-    COMMAND = "java -jar #{JAR_PATH}/simple-spreadsheet-extractor-0.3.2.jar"
+    DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-0.4.1.jar"
     
     def spreadsheet_to_xml spreadsheet_data
+      puts spreadsheet_extractor_command
+      
       if RUBY_PLATFORM =~ /mswin32/
         output = read_with_popen4 spreadsheet_data
       else        
@@ -23,13 +24,19 @@ module SysMODB
       return output
     end
     
+    
+    
+    def spreadsheet_extractor_command
+      "java -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+    end
+    
     private
     
     #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occaisional segmentation faults
     def read_with_popen4 spreadsheet_data
       output=""
       err_message = ""
-      status = POpen4::popen4(COMMAND) do |stdout, stderr, stdin, pid|
+      status = POpen4::popen4(spreadsheet_extractor_command) do |stdout, stderr, stdin, pid|
         stdin=stdin.binmode
         spreadsheet_data.each_byte{|b| stdin.putc(b)}
         stdin.close
@@ -49,7 +56,7 @@ module SysMODB
     def read_with_open4 spreadsheet_data
       output = ""
       err_message = ""
-      status = Open4::popen4(COMMAND) do |pid, stdin, stdout, stderr|
+      status = Open4::popen4(spreadsheet_extractor_command) do |pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets) != nil) do        
           stdin << line
         end

@@ -5,10 +5,10 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simple-spreadsheet-extractor}
-  s.version = "0.3.5"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Stuart Owen"]
+  s.authors = ["Stuart Owen","Finn Bacall"]
   s.date = %q{2010-11-02}
   s.description = %q{Takes a stream to a spreadsheet file and produces and XML representation of its contents}
   s.email = %q{stuart.owen@manchester.ac.uk}
@@ -30,10 +30,11 @@ Gem::Specification.new do |s|
      "jars/lib/poi-ooxml-schemas-3.6.jar",
      "jars/lib/xmlbeans-2.3.0.jar",
      "jars/simple-spreadsheet-extractor-0.3.2.jar",
+     "jars/simple-spreadsheet-extractor-0.4.1.jar",
      "lib/simple-spreadsheet-extractor.rb",
      "simple-spreadsheet-extractor.gemspec"
   ]
-  s.homepage = %q{http://github.com/myGrid/simple-spreadsheet-extractor-gem}
+  s.homepage = %q{http://github.com/fbacall/simple-spreadsheet-extractor-gem}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}

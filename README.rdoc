@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
-Authors::    Stuart Owen
-Version::    0.3.4
+Authors::    Finn Bacall, Stuart Owen
+Version::    0.4.0
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010 The University of Manchester, UK
@@ -53,29 +53,54 @@ Formulas are evaluated placing the result in the XML produced for that cell, how
 
 Row and column indexes start at 1, rather than 0, to keep consistent with namings of the cells in Excel.
 
-An XSD schema for the XML is available in doc/schema-v1.xsd["http://github.com/stuzart/simple-spreadsheet-extractor-gem/blob/master/doc/schema-v1.xsd]
+An XSD schema for the XML is available in doc/schema-v1.xsd["http://github.com/fbacall/simple-spreadsheet-extractor-gem/blob/master/doc/schema-v1.xsd"]
+
+The desired spreadsheet extractor jar can be specified by defining SPREADSHEET_EXTRACTOR_JAR_PATH in a config file (e.g. environment.rb)
 
 == Example XML
 
   <?xml version="1.0" encoding="UTF-8"?>
   <workbook xmlns="http://www.sysmo-db.org/2010/xml/spreadsheet">
-    <sheet name="Sheet1" index="1" hidden="false" very_hidden="false" first_row="1" last_row="5">
-      <row index="1">
-        <cell column="1" column_alpha="A" row="1" type="numeric">12.0</cell>
-        <cell column="2" column_alpha="B" row="1" type="numeric">654153.0</cell>
-        <cell column="27" column_alpha="AA" row="1" type="string">AA</cell>
-      </row>
+    <sheet name="Sheet1" index="1" hidden="false" very_hidden="false" first_row="2" last_row="8">
       <row index="2">
-        <cell column="1" column_alpha="A" row="2" type="numeric">547654.0</cell>
+        <cell column="2" column_alpha="B" row="2" type="string">test2</cell>
+        <cell column="3" column_alpha="C" row="2" type="string">test</cell>
+        <cell column="4" column_alpha="D" row="2" type="string">test3</cell>
       </row>
+  
       <row index="3">
-        <cell column="1" column_alpha="A" row="3" type="numeric">45465.0</cell>
+        <cell column="2" column_alpha="B" row="3" type="string">a</cell>
+        <cell column="3" column_alpha="C" row="3" type="numeric">1.0</cell>
+        <cell column="4" column_alpha="D" row="3" type="numeric">22.0</cell>
       </row>
       <row index="4">
-        <cell column="1" column_alpha="A" row="4" type="numeric" formula="A1+1">13.0</cell>
+        <cell column="2" column_alpha="B" row="4" type="string">b</cell>
+  
+        <cell column="3" column_alpha="C" row="4" type="numeric">2.0</cell>
+        <cell column="4" column_alpha="D" row="4" type="numeric">5.0</cell>
       </row>
       <row index="5">
-        <cell column="1" column_alpha="A" row="5" type="numeric" formula="SUM(A1:A4)">593144.0</cell>
+        <cell column="2" column_alpha="B" row="5" type="string">c</cell>
+        <cell column="3" column_alpha="C" row="5" type="numeric">3.0</cell>
+        <cell column="4" column_alpha="D" row="5" type="numeric">1.0</cell>
+  
+      </row>
+      <row index="6">
+        <cell column="2" column_alpha="B" row="6" type="string">d</cell>
+        <cell column="3" column_alpha="C" row="6" type="numeric">4.0</cell>
+        <cell column="4" column_alpha="D" row="6" type="numeric">5.0</cell>
+      </row>
+      <row index="7">
+  
+        <cell column="2" column_alpha="B" row="7" type="string">e</cell>
+        <cell column="3" column_alpha="C" row="7" type="numeric">5.0</cell>
+        <cell column="4" column_alpha="D" row="7" type="numeric">6.0</cell>
+      </row>
+      <row index="8">
+        <cell column="2" column_alpha="B" row="8" type="string">total</cell>
+        <cell column="3" column_alpha="C" row="8" type="numeric" formula="SUM(C3:C7)">15.0</cell>
+  
+        <cell column="4" column_alpha="D" row="8" type="numeric" formula="SUM(D3:D7)">39.0</cell>
       </row>
     </sheet>
     <sheet name="Sheet2" index="2" hidden="false" very_hidden="false" first_row="1" last_row="1"/>
