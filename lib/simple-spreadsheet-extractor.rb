@@ -13,7 +13,6 @@ module SysMODB
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-0.4.1.jar"
     
     def spreadsheet_to_xml spreadsheet_data
-      puts spreadsheet_extractor_command
       
       if RUBY_PLATFORM =~ /mswin32/
         output = read_with_popen4 spreadsheet_data
