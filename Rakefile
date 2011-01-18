@@ -15,7 +15,7 @@ begin
     gemspec.description = "Takes a stream to a spreadsheet file and produces and XML representation of its contents"
     gemspec.email = "stuart.owen@manchester.ac.uk"
     gemspec.homepage = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
-    gemspec.authors = ["Stuart Owen"]
+    gemspec.authors = ["Stuart Owen","Finn Bacall"]
     
     gemspec.files.include %w(jars)
     gemspec.files.exclude "test/*"
