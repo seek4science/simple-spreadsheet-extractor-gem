@@ -36,7 +36,7 @@ module SysMODB
     
     private
     
-    #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occaisional segmentation faults
+    #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occasional segmentation faults
     def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output=""
       err_message = ""
