@@ -15,12 +15,10 @@ module SysMODB
     def spreadsheet_to_xml spreadsheet_data
       
       if RUBY_PLATFORM =~ /mswin32/
-        output = read_with_popen4 spreadsheet_data
+        read_with_popen4 spreadsheet_data
       else        
-        output = read_with_open4 spreadsheet_data
+        read_with_open4 spreadsheet_data
       end
-      
-      return output
     end
     
     
@@ -49,7 +47,7 @@ module SysMODB
         raise SpreadsheetExtractionException.new(err_message)             
       end
       
-      return output
+      output
     end
     
     def read_with_open4 spreadsheet_data
@@ -76,7 +74,7 @@ module SysMODB
         raise SpreadsheetExtractionException.new(err_message)             
       end
                   
-      return output
+      output
     end
     
   end
