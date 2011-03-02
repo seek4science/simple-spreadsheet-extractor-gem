@@ -1,6 +1,6 @@
 = Simple Spreadsheet Extractor
 
-Authors::    Finn Bacall, Stuart Owen
+Authors::    Stuart Owen, Finn Bacall
 Version::    0.5.0
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
@@ -31,7 +31,7 @@ Note that on Windows you must also do:
 
 * require 'simple-spreadsheet-extractor'
 * include the module SysMODB::SpreadsheetExtractor
-* pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the spreadsheet. Alternatively use spreadsheet_to_csv for CSV,
+* pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the spreadsheet. Alternatively use spreadsheet_to_csv for CSV.
 * if something goes wrong with the extraction then a SysMODB::SpreadsheetExtractionException will be thrown
   
 e.g.
