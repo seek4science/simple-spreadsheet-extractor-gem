@@ -13,11 +13,18 @@ module SysMODB
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-0.5.0.jar"
     
     def spreadsheet_to_xml spreadsheet_data
-      
       if RUBY_PLATFORM =~ /mswin32/
-        read_with_popen4 spreadsheet_data
+        read_with_popen4 spreadsheet_data,"xml"
       else        
-        read_with_open4 spreadsheet_data
+        read_with_open4 spreadsheet_data,"xml"
+      end
+    end
+
+    def spreadsheet_to_csv spreadsheet_data,sheet=1,trim=false
+      if RUBY_PLATFORM =~ /mswin32/
+        read_with_popen4 spreadsheet_data,"csv",sheet,trim
+      else
+        read_with_open4 spreadsheet_data,"csv",sheet,trim
       end
     end
     
@@ -30,10 +37,13 @@ module SysMODB
     private
     
     #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occaisional segmentation faults
-    def read_with_popen4 spreadsheet_data
+    def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output=""
       err_message = ""
-      status = POpen4::popen4(spreadsheet_extractor_command) do |stdout, stderr, stdin, pid|
+      command = spreadsheet_extractor_command + " -o #{format}"
+      command += " -s #{sheet}" if sheet
+      command += " -t" if trim
+      status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
         stdin=stdin.binmode
         spreadsheet_data.each_byte{|b| stdin.putc(b)}
         stdin.close
@@ -47,13 +57,16 @@ module SysMODB
         raise SpreadsheetExtractionException.new(err_message)             
       end
       
-      output
+      output.strip
     end
     
-    def read_with_open4 spreadsheet_data
+    def read_with_open4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output = ""
       err_message = ""
-      status = Open4::popen4(spreadsheet_extractor_command) do |pid, stdin, stdout, stderr|
+      command = spreadsheet_extractor_command + " -o #{format}"
+      command += " -s #{sheet}" if sheet
+      command += " -t" if trim
+      status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets) != nil) do        
           stdin << line
         end
@@ -74,7 +87,7 @@ module SysMODB
         raise SpreadsheetExtractionException.new(err_message)             
       end
                   
-      output
+      output.strip
     end
     
   end
