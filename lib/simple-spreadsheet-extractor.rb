@@ -30,8 +30,12 @@ module SysMODB
     
     
     
-    def spreadsheet_extractor_command
-      "java -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+    def spreadsheet_extractor_command format="xml",sheet=nil,trim=false
+      command = "java -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+      command +=  " -o #{format}"
+      command += " -s #{sheet}" if sheet
+      command += " -t" if trim
+      command
     end
     
     private
@@ -44,9 +48,7 @@ module SysMODB
     def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output=""
       err_message = ""
-      command = spreadsheet_extractor_command + " -o #{format}"
-      command += " -s #{sheet}" if sheet
-      command += " -t" if trim
+      command = spreadsheet_extractor_command format,sheet,trim
       status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
         stdin=stdin.binmode
         spreadsheet_data.each_byte{|b| stdin.putc(b)}
@@ -67,9 +69,7 @@ module SysMODB
     def read_with_open4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output = ""
       err_message = ""
-      command = spreadsheet_extractor_command + " -o #{format}"
-      command += " -s #{sheet}" if sheet
-      command += " -t" if trim
+      command = spreadsheet_extractor_command format,sheet,trim      
       status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets) != nil) do        
           stdin << line

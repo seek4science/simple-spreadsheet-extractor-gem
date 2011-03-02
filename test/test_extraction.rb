@@ -55,6 +55,16 @@ class TestExtraction < Test::Unit::TestCase
     csv = spreadsheet_to_csv(f,"2")
     assert_equal expected,csv
   end
+
+  def test_csv_output_trimmed
+    test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
+    expected_file = File.dirname(__FILE__) + "/files/test-csv-output1-trimmed.csv"
+    expected = open(expected_file,"rb").read
+
+    f=open(test_sheet,"rb")
+    csv = spreadsheet_to_csv(f,2,true)
+    assert_equal expected,csv
+  end
   
   def test_for_segfault  
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
