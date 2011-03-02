@@ -14,7 +14,7 @@ module SysMODB
     
     def spreadsheet_to_xml spreadsheet_data
       
-      if RUBY_PLATFORM =~ /mswin32/
+      if is_windows?
         output = read_with_popen4 spreadsheet_data
       else        
         output = read_with_open4 spreadsheet_data
@@ -30,6 +30,10 @@ module SysMODB
     end
     
     private
+    
+    def is_windows?
+        !(RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/).nil?
+    end
     
     #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occaisional segmentation faults
     def read_with_popen4 spreadsheet_data
