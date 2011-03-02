@@ -11,6 +11,8 @@ Copyright::  (c) 2010 The University of Manchester, UK
 
 This is a simple gem that provides a facility to read an XLS or XLSX Excel spreadsheet document and produce an XML representation of its content.
 
+CSV output can also be generated for a single sheet.
+
 Internally it uses Apache POI, using the sister http://github.com/myGrid/simple-spreadsheet-extractor tool.
 
 This is a simple tool developed for use within SysMO-DB[http://www.sysmo-db.org].
@@ -29,7 +31,7 @@ Note that on Windows you must also do:
 
 * require 'simple-spreadsheet-extractor'
 * include the module SysMODB::SpreadsheetExtractor
-* pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the sheet.
+* pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the spreadsheet. Alternatively use spreadsheet_to_csv for CSV,
 * if something goes wrong with the extraction then a SysMODB::SpreadsheetExtractionException will be thrown
   
 e.g.
@@ -42,7 +44,7 @@ e.g.
 
    path=ARGV.first
 
-   f=open(path)
+   f=open path
    begin
      puts spreadsheet_to_xml(f)
    rescue SysMODB::SpreadsheetExtractionException=>e
@@ -53,9 +55,19 @@ Formulas are evaluated placing the result in the XML produced for that cell, how
 
 Row and column indexes start at 1, rather than 0, to keep consistent with namings of the cells in Excel.
 
-An XSD schema for the XML is available in doc/schema-v1.xsd["http://github.com/fbacall/simple-spreadsheet-extractor-gem/blob/master/doc/schema-v1.xsd"]
+An XSD schema for the XML is available in doc/schema-v1.xsd["http://github.com/myGrid/simple-spreadsheet-extractor-gem/blob/master/doc/schema-v1.xsd"]
 
 The desired spreadsheet extractor jar can be specified by defining SPREADSHEET_EXTRACTOR_JAR_PATH in a config file (e.g. environment.rb)
+
+CSV can be generated in a similar way, and also takes an optional sheet number. If the sheet number is missing then the first sheet is used.
+
+Note that the sheet number for the first sheet is 1, and can either be a string or integer.
+
+e.g.
+
+   puts spreadsheet_to_csv(f,"1")
+
+
 
 == Example XML
 
