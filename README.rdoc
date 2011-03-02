@@ -55,7 +55,7 @@ Formulas are evaluated placing the result in the XML produced for that cell, how
 
 Row and column indexes start at 1, rather than 0, to keep consistent with namings of the cells in Excel.
 
-An XSD schema for the XML is available in doc/schema-v1.xsd["http://github.com/myGrid/simple-spreadsheet-extractor-gem/blob/master/doc/schema-v1.xsd"]
+An XSD schema for the XML is available in doc/schema-v1.xsd["tree/master/doc/schema-v1.xsd"]
 
 The desired spreadsheet extractor jar can be specified by defining SPREADSHEET_EXTRACTOR_JAR_PATH in a config file (e.g. environment.rb)
 
