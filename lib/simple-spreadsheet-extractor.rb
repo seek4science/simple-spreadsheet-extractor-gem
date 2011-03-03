@@ -12,8 +12,8 @@ module SysMODB
     
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-0.5.0.jar"
     
-    def spreadsheet_to_xml spreadsheet_data
-      if RUBY_PLATFORM =~ /mswin32/
+    def spreadsheet_to_xml spreadsheet_data      
+      if is_windows?              
         read_with_popen4 spreadsheet_data,"xml"
       else        
         read_with_open4 spreadsheet_data,"xml"
@@ -21,7 +21,7 @@ module SysMODB
     end
 
     def spreadsheet_to_csv spreadsheet_data,sheet=1,trim=false
-      if RUBY_PLATFORM =~ /mswin32/
+      if is_windows?
         read_with_popen4 spreadsheet_data,"csv",sheet,trim
       else
         read_with_open4 spreadsheet_data,"csv",sheet,trim
@@ -30,19 +30,25 @@ module SysMODB
     
     
     
-    def spreadsheet_extractor_command
-      "java -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+    def spreadsheet_extractor_command format="xml",sheet=nil,trim=false
+      command = "java -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+      command +=  " -o #{format}"
+      command += " -s #{sheet}" if sheet
+      command += " -t" if trim
+      command
     end
     
     private
-    
+       
+    def is_windows?
+        !(RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/).nil?
+    end        
+
     #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occasional segmentation faults
     def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output=""
       err_message = ""
-      command = spreadsheet_extractor_command + " -o #{format}"
-      command += " -s #{sheet}" if sheet
-      command += " -t" if trim
+      command = spreadsheet_extractor_command format,sheet,trim
       status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
         stdin=stdin.binmode
         spreadsheet_data.each_byte{|b| stdin.putc(b)}
@@ -63,9 +69,7 @@ module SysMODB
     def read_with_open4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output = ""
       err_message = ""
-      command = spreadsheet_extractor_command + " -o #{format}"
-      command += " -s #{sheet}" if sheet
-      command += " -t" if trim
+      command = spreadsheet_extractor_command format,sheet,trim      
       status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets) != nil) do        
           stdin << line
