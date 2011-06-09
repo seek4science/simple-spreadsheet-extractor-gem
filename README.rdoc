@@ -73,48 +73,67 @@ e.g.
 
   <?xml version="1.0" encoding="UTF-8"?>
   <workbook xmlns="http://www.sysmo-db.org/2010/xml/spreadsheet">
-    <sheet name="Sheet1" index="1" hidden="false" very_hidden="false" first_row="2" last_row="8">
-      <row index="2">
-        <cell column="2" column_alpha="B" row="2" type="string">test2</cell>
-        <cell column="3" column_alpha="C" row="2" type="string">test</cell>
-        <cell column="4" column_alpha="D" row="2" type="string">test3</cell>
-      </row>
-  
-      <row index="3">
-        <cell column="2" column_alpha="B" row="3" type="string">a</cell>
-        <cell column="3" column_alpha="C" row="3" type="numeric">1.0</cell>
-        <cell column="4" column_alpha="D" row="3" type="numeric">22.0</cell>
-      </row>
-      <row index="4">
-        <cell column="2" column_alpha="B" row="4" type="string">b</cell>
-  
-        <cell column="3" column_alpha="C" row="4" type="numeric">2.0</cell>
-        <cell column="4" column_alpha="D" row="4" type="numeric">5.0</cell>
-      </row>
-      <row index="5">
-        <cell column="2" column_alpha="B" row="5" type="string">c</cell>
-        <cell column="3" column_alpha="C" row="5" type="numeric">3.0</cell>
-        <cell column="4" column_alpha="D" row="5" type="numeric">1.0</cell>
-  
-      </row>
-      <row index="6">
-        <cell column="2" column_alpha="B" row="6" type="string">d</cell>
-        <cell column="3" column_alpha="C" row="6" type="numeric">4.0</cell>
-        <cell column="4" column_alpha="D" row="6" type="numeric">5.0</cell>
-      </row>
-      <row index="7">
-  
-        <cell column="2" column_alpha="B" row="7" type="string">e</cell>
-        <cell column="3" column_alpha="C" row="7" type="numeric">5.0</cell>
-        <cell column="4" column_alpha="D" row="7" type="numeric">6.0</cell>
-      </row>
-      <row index="8">
-        <cell column="2" column_alpha="B" row="8" type="string">total</cell>
-        <cell column="3" column_alpha="C" row="8" type="numeric" formula="SUM(C3:C7)">15.0</cell>
-  
-        <cell column="4" column_alpha="D" row="8" type="numeric" formula="SUM(D3:D7)">39.0</cell>
-      </row>
+    <styles>
+      <style id="style21">
+        <border-top>dotted 1pt</border-top>
+        <border-bottom>dotted 1pt</border-bottom>
+        <border-left>dotted 1pt</border-left>
+        <border-right>dotted 1pt</border-right>
+        <background-color>#ffcc99</background-color>
+      </style>
+      <style id="style22">
+        <border-top>dotted 1pt</border-top>
+        <border-bottom>dotted 1pt</border-bottom>
+        <border-left>dotted 1pt</border-left>
+        <border-right>dotted 1pt</border-right>
+        <font-weight>bold</font-weight>
+        <font-style>italics</font-style>
+        <text-decoration>underline</text-decoration>
+      </style>
+      <style id="style23">
+        <color>#2323dc</color>
+      </style>
+    </styles>
+    <sheet name="Sheet1" index="1" hidden="false" very_hidden="false">
+      <columns first_column="1" last_column="3">
+        <column index="1" column_alpha="A" width="2048"/>
+        <column index="2" column_alpha="B" width="2048"/>
+        <column index="3" column_alpha="C" width="2048"/>
+      </columns>
+      <rows first_row="1" last_row="6">
+        <row index="1">
+          <cell column="1" column_alpha="A" row="1" type="numeric">13.0</cell>
+          <cell column="2" column_alpha="B" row="1" type="numeric">654153.0</cell>
+          <cell column="27" column_alpha="AA" row="1" type="string">AA</cell>
+          <cell column="28" column_alpha="AB" row="1" type="string">AB</cell>
+          <cell column="53" column_alpha="BA" row="1" type="string">BA</cell>
+          <cell column="54" column_alpha="BB" row="1" type="string">BB</cell>
+          <cell column="55" column_alpha="BC" row="1" type="string">BC</cell>
+        </row>
+        <row index="2">
+          <cell column="1" column_alpha="A" row="2" type="numeric" style="style21">547654.0</cell>
+        </row>
+        <row index="3">
+          <cell column="1" column_alpha="A" row="3" type="numeric">45465.0</cell>
+        </row>
+        <row index="4" height="14.05pt">
+          <cell column="1" column_alpha="A" row="4" type="numeric" style="style22" formula="A1+1">14.0</cell>
+        </row>
+        <row index="6">
+          <cell column="1" column_alpha="A" row="6" type="datetime" style="style23" formula="DATE(2009,6,15)">2009-06-15T0:0:0+0100</cell>
+        </row>
+      </rows>
     </sheet>
-    <sheet name="Sheet2" index="2" hidden="false" very_hidden="false" first_row="1" last_row="1"/>
-    <sheet name="Sheet3" index="3" hidden="false" very_hidden="false" first_row="1" last_row="1"/>
+    <sheet name="Sheet2" index="2" hidden="false" very_hidden="false">
+      <columns first_column="1" last_column="1">
+        <column index="1" column_alpha="A" width="2048"/>
+      </columns>
+      <rows first_row="1" last_row="1"/>
+    </sheet>
+    <sheet name="Sheet3" index="3" hidden="false" very_hidden="false">
+      <columns first_column="1" last_column="1">
+        <column index="1" column_alpha="A" width="2048"/>
+      </columns>
+      <rows first_row="1" last_row="1"/>
+    </sheet>
   </workbook>
