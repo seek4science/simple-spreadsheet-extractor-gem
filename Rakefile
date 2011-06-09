@@ -12,7 +12,7 @@ begin
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "simple-spreadsheet-extractor"
     gemspec.summary = "Basic spreadsheet content extraction using Apache POI"
-    gemspec.description = "Takes a stream to a spreadsheet file and produces and XML representation of its contents"
+    gemspec.description = "Takes a stream to a spreadsheet file and produces an XML or CSV representation of its contents"
     gemspec.email = "stuart.owen@manchester.ac.uk"
     gemspec.homepage = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
     gemspec.authors = ["Stuart Owen","Finn Bacall"]

@@ -9,8 +9,8 @@ module SysMODB
   end
   
   module SpreadsheetExtractor
-    
-    DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-0.5.0.jar"
+    JAR_VERSION="0.6.0"
+    DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
     
     def spreadsheet_to_xml spreadsheet_data      
       if is_windows?              
