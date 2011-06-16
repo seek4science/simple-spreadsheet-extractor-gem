@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen, Finn Bacall
-Version::    0.6.0
+Version::    0.6.1
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010 The University of Manchester, UK
@@ -36,7 +36,7 @@ Note that on Windows you must also do:
   
 e.g.
 
-   #example.rb - takes path, i.e. ruby example.rb /tmp/spreadsheet.xls
+   #examples/example.rb - takes path, i.e. ruby example.rb /tmp/spreadsheet.xls
    require 'rubygems'
    require 'simple-spreadsheet-extractor'
 
