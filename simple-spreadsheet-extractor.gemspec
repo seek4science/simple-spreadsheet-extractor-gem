@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "jars/lib/poi-ooxml-3.7.jar",
     "jars/lib/poi-ooxml-schemas-3.7.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
+    "jars/simple-spreadsheet-extractor-0.6.3.jar",
     "lib/simple-spreadsheet-extractor.rb",
     "simple-spreadsheet-extractor.gemspec"
   ]
