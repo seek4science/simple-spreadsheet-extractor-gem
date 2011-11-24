@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen, Finn Bacall
-Version::    0.6.4
+Version::    0.7.0
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010 The University of Manchester, UK
@@ -73,6 +73,7 @@ e.g.
 
   <?xml version="1.0" encoding="UTF-8"?>
   <workbook xmlns="http://www.sysmo-db.org/2010/xml/spreadsheet">
+    <named_ranges/>
     <styles>
       <style id="style21">
         <border-top>dotted 1pt</border-top>
@@ -95,6 +96,7 @@ e.g.
       </style>
     </styles>
     <sheet name="Sheet1" index="1" hidden="false" very_hidden="false">
+      <data_validations/>
       <columns first_column="1" last_column="3">
         <column index="1" column_alpha="A" width="2048"/>
         <column index="2" column_alpha="B" width="2048"/>
@@ -125,6 +127,7 @@ e.g.
       </rows>
     </sheet>
     <sheet name="Sheet2" index="2" hidden="false" very_hidden="false">
+      <data_validations/>
       <columns first_column="1" last_column="1">
         <column index="1" column_alpha="A" width="2048"/>
       </columns>
