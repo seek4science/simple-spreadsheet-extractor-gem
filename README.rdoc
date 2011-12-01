@@ -4,7 +4,7 @@ Authors::    Stuart Owen, Finn Bacall
 Version::    0.7.2
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
-Copyright::  (c) 2010 The University of Manchester, UK
+Copyright::  (c) 2010-2011 The University of Manchester, UK
 
 
 == Synopsis
