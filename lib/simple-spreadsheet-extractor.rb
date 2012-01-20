@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'popen4'
 require 'open4'
 
 
@@ -14,7 +13,7 @@ module SysMODB
     
     def spreadsheet_to_xml spreadsheet_data      
       if is_windows?              
-        read_with_popen4 spreadsheet_data,"xml"
+        raise Exception.new("Windows is not currently supported")
       else        
         read_with_open4 spreadsheet_data,"xml"
       end
@@ -22,7 +21,7 @@ module SysMODB
 
     def spreadsheet_to_csv spreadsheet_data,sheet=1,trim=false
       if is_windows?
-        read_with_popen4 spreadsheet_data,"csv",sheet,trim
+        raise Exception.new("Windows is not currently supported")
       else
         read_with_open4 spreadsheet_data,"csv",sheet,trim
       end
@@ -45,26 +44,26 @@ module SysMODB
     end        
 
     #opens using POpen4 - this is for the benefit of Windows. It has been found to be unstable in Linux and give occasional segmentation faults
-    def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
-      output=""
-      err_message = ""
-      command = spreadsheet_extractor_command format,sheet,trim
-      status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
-        stdin=stdin.binmode
-        spreadsheet_data.each_byte{|b| stdin.putc(b)}
-        stdin.close
-        
-        output=stdout.read.strip                     
-        err_message=stderr.read.strip
-        
-      end
-      
-      if status.to_i != 0                         
-        raise SpreadsheetExtractionException.new(err_message)             
-      end
-      
-      output.strip
-    end
+    #def read_with_popen4 spreadsheet_data,format="xml",sheet=nil,trim=false
+    #  output=""
+    #  err_message = ""
+    #  command = spreadsheet_extractor_command format,sheet,trim
+    #  status = POpen4::popen4(command) do |stdout, stderr, stdin, pid|
+    #    stdin=stdin.binmode
+    #    spreadsheet_data.each_byte{|b| stdin.putc(b)}
+    #    stdin.close
+    #
+    #    output=stdout.read.strip
+    #    err_message=stderr.read.strip
+    #
+    #  end
+    #
+    #  if status.to_i != 0
+    #    raise SpreadsheetExtractionException.new(err_message)
+    #  end
+    #
+    #  output.strip
+    #end
     
     def read_with_open4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output = ""

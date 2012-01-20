@@ -1,10 +1,10 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen, Finn Bacall
-Version::    0.7.2
+Version::    0.8.0
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
-Copyright::  (c) 2010-2011 The University of Manchester, UK
+Copyright::  (c) 2010-2012 The University of Manchester, UK
 
 
 == Synopsis
@@ -23,9 +23,7 @@ Java 1.6 (JRE) is required.
 
   gem install simple-spreadsheet-extractor
 
-Note that on Windows you must also do:
-
-  gem install win32-open3
+*Note that Windows is no longer supported* (since version 0.7.2.1)
 
 == Usage
 
