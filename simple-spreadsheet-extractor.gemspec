@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simple-spreadsheet-extractor}
-  s.version = "0.9.0"
+  s.version = "0.9.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen", "Finn Bacall"]
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "jars/lib/poi-ooxml-schemas-3.8-beta4.jar",
     "jars/lib/poi-rightfield-3.8-beta4.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
+    "jars/simple-spreadsheet-extractor-0.9.jar",
     "lib/simple-spreadsheet-extractor.rb",
     "simple-spreadsheet-extractor.gemspec",
     "test/files/not-a-spreadsheet.xls",
