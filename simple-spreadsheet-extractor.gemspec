@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{simple-spreadsheet-extractor}
-  s.version = "0.8.0"
+  s.version = "0.9.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen", "Finn Bacall"]
-  s.date = %q{2012-01-20}
+  s.date = %q{2012-01-24}
   s.description = %q{Takes a stream to a spreadsheet file and produces an XML or CSV representation of its contents}
   s.email = %q{stuart.owen@manchester.ac.uk}
   s.extra_rdoc_files = [
@@ -27,9 +27,12 @@ Gem::Specification.new do |s|
     "jars/lib/poi-ooxml-schemas-3.8-beta4.jar",
     "jars/lib/poi-rightfield-3.8-beta4.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
-    "jars/simple-spreadsheet-extractor-0.7.2.jar",
     "lib/simple-spreadsheet-extractor.rb",
-    "simple-spreadsheet-extractor.gemspec"
+    "simple-spreadsheet-extractor.gemspec",
+    "test/files/not-a-spreadsheet.xls",
+    "test/files/test-csv-output1-trimmed.csv",
+    "test/files/test-csv-output1.csv",
+    "test/files/test-spreadsheet.xls"
   ]
   s.homepage = %q{http://github.com/myGrid/simple-spreadsheet-extractor-gem}
   s.require_paths = ["lib"]
