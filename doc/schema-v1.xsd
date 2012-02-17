@@ -84,7 +84,7 @@
 			use="required"></xsd:attribute>
 		<xsd:attribute name="column_alpha" type="xsd:string"
 		        use="required"></xsd:attribute>
-		<xsd:attribute name="width" type="xsd:positiveInteger"
+		<xsd:attribute name="width" type="xsd:nonNegativeInteger"
 			use="optional"></xsd:attribute>
 	</xsd:complexType>
 	
