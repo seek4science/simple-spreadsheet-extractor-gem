@@ -21,7 +21,7 @@ begin
     gemspec.files.include %w(jars)
     gemspec.files.exclude "test/*"
     gemspec.extra_rdoc_files = ["README.rdoc", "LICENCE"]
-    #gemspec.add_dependency("POpen4","0.1.4")
+    gemspec.add_dependency("libxml-ruby","2.2.2")
     gemspec.add_dependency("open4","1.3.0")
   end
 rescue LoadError

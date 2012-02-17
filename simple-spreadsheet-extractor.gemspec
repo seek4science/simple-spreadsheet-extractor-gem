@@ -24,7 +24,11 @@ Gem::Specification.new do |s|
     "doc/schema-v1.xsd",
     "examples/example.rb",
     "jars/lib/dom4j-1.6.1.jar",
+    "jars/lib/poi-ooxml-3.8-beta5.jar",
+    "jars/lib/poi-ooxml-schemas-3.8-beta5.jar",
+    "jars/lib/rightfield-poi-3.8-beta5.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
+    "jars/simple-spreadsheet-extractor-0.9.2.jar",
     "lib/simple-spreadsheet-extractor.rb",
     "simple-spreadsheet-extractor.gemspec",
     "test/files/not-a-spreadsheet.xls",
@@ -42,11 +46,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<libxml-ruby>, ["= 2.2.2"])
       s.add_runtime_dependency(%q<open4>, ["= 1.3.0"])
     else
+      s.add_dependency(%q<libxml-ruby>, ["= 2.2.2"])
       s.add_dependency(%q<open4>, ["= 1.3.0"])
     end
   else
+    s.add_dependency(%q<libxml-ruby>, ["= 2.2.2"])
     s.add_dependency(%q<open4>, ["= 1.3.0"])
   end
 end
