@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen, Finn Bacall
-Version::    0.8.0
+Version::    0.9.2
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010-2012 The University of Manchester, UK
