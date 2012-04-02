@@ -1,9 +1,9 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rubygems'
 
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 
 task :default => [:test]
 
