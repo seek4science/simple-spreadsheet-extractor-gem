@@ -38,6 +38,13 @@ class TestExtraction < Test::Unit::TestCase
     end
   end
 
+  def test_problem_with_dv
+    test_sheet = File.dirname(__FILE__) + "/files/problem_with_dv.xls"
+    f=open(test_sheet,"rb")
+    xml = spreadsheet_to_xml(f)
+    validate_against_schema(xml)
+  end
+
   def validate_against_schema xml
     document = LibXML::XML::Document.string(xml)
     schema = LibXML::XML::Schema.new(SCHEMA_FILE_PATH)
@@ -76,7 +83,7 @@ class TestExtraction < Test::Unit::TestCase
 
   def test_for_segfault
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
-    10.times do |x|
+    5.times do |x|
       f=open(test_sheet,"rb")
       xml = spreadsheet_to_xml(f)
     end

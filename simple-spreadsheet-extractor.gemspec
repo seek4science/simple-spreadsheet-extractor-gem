@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen", "Finn Bacall"]
-  s.date = %q{2012-02-17}
+  s.date = %q{2012-04-02}
   s.description = %q{Takes a stream to a spreadsheet file and produces an XML or CSV representation of its contents}
   s.email = %q{stuart.owen@manchester.ac.uk}
   s.extra_rdoc_files = [
@@ -28,10 +28,11 @@ Gem::Specification.new do |s|
     "jars/lib/poi-ooxml-schemas-3.8-beta5.jar",
     "jars/lib/rightfield-poi-3.8-beta5.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
-    "jars/simple-spreadsheet-extractor-0.9.2.jar",
+    "jars/simple-spreadsheet-extractor-0.10.jar",
     "lib/simple-spreadsheet-extractor.rb",
     "simple-spreadsheet-extractor.gemspec",
     "test/files/not-a-spreadsheet.xls",
+    "test/files/problem_with_dv.xls",
     "test/files/test-csv-output1-trimmed.csv",
     "test/files/test-csv-output1.csv",
     "test/files/test-spreadsheet.xls"
