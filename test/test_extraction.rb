@@ -59,7 +59,7 @@ class TestExtraction < Test::Unit::TestCase
   def test_csv_output
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
     expected_file = File.dirname(__FILE__) + "/files/test-csv-output1.csv"
-    expected = open(expected_file,"rb").read
+    expected = open(expected_file,"rb").read.strip
 
     f=open(test_sheet,"rb")
     csv = spreadsheet_to_csv(f,2)
