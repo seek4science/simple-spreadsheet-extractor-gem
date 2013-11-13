@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "jars/lib/dom4j-1.6.1.jar",
     "jars/lib/poi-ooxml-3.9.jar",
     "jars/lib/poi-ooxml-schemas-3.9.jar",
+    "jars/lib/rightfield-poi-3.9.jar",
     "jars/lib/xmlbeans-2.3.0.jar",
     "jars/simple-spreadsheet-extractor-0.13.0.jar",
     "lib/simple-spreadsheet-extractor.rb",
@@ -36,7 +37,8 @@ Gem::Specification.new do |s|
     "test/files/problem_with_dv.xls",
     "test/files/test-csv-output1-trimmed.csv",
     "test/files/test-csv-output1.csv",
-    "test/files/test-spreadsheet.xls"
+    "test/files/test-spreadsheet.xls",
+    "test/test_extraction.rb"
   ]
   s.homepage = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
   s.require_paths = ["lib"]
