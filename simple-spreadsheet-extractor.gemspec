@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple-spreadsheet-extractor"
-  s.version = "0.13.1"
+  s.version = "0.13.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen", "Finn Bacall"]
-  s.date = "2013-11-13"
+  s.date = "2014-03-19"
   s.description = "Takes a stream to a spreadsheet file and produces an XML or CSV representation of its contents"
   s.email = "stuart.owen@manchester.ac.uk"
   s.extra_rdoc_files = [
@@ -49,26 +49,26 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+      s.add_runtime_dependency(%q<libxml-ruby>, [">= 2.7.0"])
       s.add_runtime_dependency(%q<open4>, ["= 1.3.0"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+      s.add_runtime_dependency(%q<libxml-ruby>, [">= 2.7.0"])
       s.add_runtime_dependency(%q<open4>, ["= 1.3.0"])
     else
-      s.add_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+      s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
       s.add_dependency(%q<open4>, ["= 1.3.0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+      s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
       s.add_dependency(%q<open4>, ["= 1.3.0"])
     end
   else
-    s.add_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+    s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
     s.add_dependency(%q<open4>, ["= 1.3.0"])
     s.add_dependency(%q<rdoc>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<libxml-ruby>, ["= 2.6.0"])
+    s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
     s.add_dependency(%q<open4>, ["= 1.3.0"])
   end
 end
