@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "simple-spreadsheet-extractor"
-  s.version = "0.13.2"
+  s.version = "0.13.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stuart Owen", "Finn Bacall"]
-  s.date = "2014-03-19"
+  s.date = "2014-04-01"
   s.description = "Takes a stream to a spreadsheet file and produces an XML or CSV representation of its contents"
   s.email = "stuart.owen@manchester.ac.uk"
   s.extra_rdoc_files = [
@@ -42,33 +42,33 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.25"
+  s.rubygems_version = "2.0.0.rc.2"
   s.summary = "Basic spreadsheet content extraction using Apache POI"
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+      s.add_runtime_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
       s.add_runtime_dependency(%q<open4>, ["= 1.3.0"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+      s.add_runtime_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
       s.add_runtime_dependency(%q<open4>, ["= 1.3.0"])
     else
-      s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+      s.add_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
       s.add_dependency(%q<open4>, ["= 1.3.0"])
       s.add_dependency(%q<rdoc>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+      s.add_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
       s.add_dependency(%q<open4>, ["= 1.3.0"])
     end
   else
-    s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+    s.add_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
     s.add_dependency(%q<open4>, ["= 1.3.0"])
     s.add_dependency(%q<rdoc>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<libxml-ruby>, [">= 2.7.0"])
+    s.add_dependency(%q<libxml-ruby>, ["~> 2.6.0"])
     s.add_dependency(%q<open4>, ["= 1.3.0"])
   end
 end
