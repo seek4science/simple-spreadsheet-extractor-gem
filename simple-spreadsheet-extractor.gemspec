@@ -18,7 +18,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    ".rvmrc",
+    ".ruby-gemspec",
+    ".ruby-version",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE",
