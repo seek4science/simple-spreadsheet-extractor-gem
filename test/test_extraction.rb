@@ -19,7 +19,6 @@ class TestExtraction < Test::Unit::TestCase
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
     contents = open(test_sheet, "rb") {|io| io.read }
     io=StringIO.new contents
-    assert_nil io.path
     xml = spreadsheet_to_xml(io)
   end
   
