@@ -6,6 +6,10 @@ Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010-2012 The University of Manchester, UK
 
+{<img src="https://codeclimate.com/github/myGrid/simple-spreadsheet-extractor-gem/badges/gpa.svg" />}[https://codeclimate.com/github/myGrid/simple-spreadsheet-extractor-gem]
+
+{<img src="https://travis-ci.org/myGrid/simple-spreadsheet-extractor-gem.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/myGrid/simple-spreadsheet-extractor-gem]
+
 
 == Synopsis
 
