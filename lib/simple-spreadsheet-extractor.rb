@@ -10,6 +10,7 @@ module SysMODB
   module SpreadsheetExtractor
     JAR_VERSION="0.13.1"
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
+    BUFFER_SIZE=250000 # 1/4 a megabyte
     
     def spreadsheet_to_xml spreadsheet_data      
       if is_windows?              
@@ -70,17 +71,19 @@ module SysMODB
       err_message = ""
       command = spreadsheet_extractor_command format,sheet,trim      
       status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
-        while ((line = spreadsheet_data.gets) != nil) do        
+        while ((line = spreadsheet_data.gets(BUFFER_SIZE)) != nil) do
           stdin << line
         end
         stdin.close
                      
-        while ((line = stdout.gets) != nil) do
+        while ((line = stdout.gets(BUFFER_SIZE)) != nil) do
           output << line
+          pp line
+          pp "--------------"
         end      
         stdout.close
                 
-        while ((line=stderr.gets)!= nil) do
+        while ((line=stderr.gets((BUFFER_SIZE)))!= nil) do
           err_message << line
         end
         stderr.close
