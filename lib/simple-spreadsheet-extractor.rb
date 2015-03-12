@@ -8,7 +8,7 @@ module SysMODB
   end
   
   module SpreadsheetExtractor
-    JAR_VERSION="0.14.0"
+    JAR_VERSION="0.14.1"
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
     BUFFER_SIZE=250000 # 1/4 a megabyte
     
@@ -69,7 +69,7 @@ module SysMODB
     def read_with_open4 spreadsheet_data,format="xml",sheet=nil,trim=false
       output = ""
       err_message = ""
-      command = spreadsheet_extractor_command format,sheet,trim      
+      command = spreadsheet_extractor_command format,sheet,trim
       status = Open4::popen4(command) do |pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets(BUFFER_SIZE)) != nil) do
           stdin << line
