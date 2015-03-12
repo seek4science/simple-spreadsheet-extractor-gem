@@ -8,7 +8,7 @@ module SysMODB
   end
   
   module SpreadsheetExtractor
-    JAR_VERSION="0.13.1"
+    JAR_VERSION="0.14.0"
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
     BUFFER_SIZE=250000 # 1/4 a megabyte
     
@@ -78,8 +78,6 @@ module SysMODB
                      
         while ((line = stdout.gets(BUFFER_SIZE)) != nil) do
           output << line
-          pp line
-          pp "--------------"
         end      
         stdout.close
                 
