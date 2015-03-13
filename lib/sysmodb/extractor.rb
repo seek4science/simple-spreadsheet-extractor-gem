@@ -41,7 +41,6 @@ module SysMODB
       output = ""
       err_message = ""
       command = spreadsheet_extractor_command format,sheet,trim
-      puts command
       status = Open4.popen4(command) do |_pid, stdin, stdout, stderr|
         while ((line = spreadsheet_data.gets(BUFFER_SIZE)) != nil) do
           stdin << line
