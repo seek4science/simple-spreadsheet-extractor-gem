@@ -8,7 +8,7 @@ module SysMODB
   end
   
   module SpreadsheetExtractor
-    JAR_VERSION="0.14.1"
+    JAR_VERSION="0.15.0"
     DEFAULT_PATH = File.dirname(__FILE__) + "/../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
     BUFFER_SIZE=250000 # 1/4 a megabyte
     
