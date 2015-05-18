@@ -44,6 +44,13 @@ class TestExtraction < Test::Unit::TestCase
     validate_against_schema(xml)
   end
 
+  def test_invalid_xml_chars
+    test_sheet = File.dirname(__FILE__) + "/files/xml-unfriendly-chars.xlsx"
+    f=open(test_sheet,"rb")
+    xml = spreadsheet_to_xml(f)
+    validate_against_schema(xml)
+  end
+
   def validate_against_schema xml
     document = LibXML::XML::Document.string(xml)
     schema = LibXML::XML::Schema.new(SCHEMA_FILE_PATH)

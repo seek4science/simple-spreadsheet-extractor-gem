@@ -7,7 +7,7 @@ module SysMODB
   #handles the delegation to java, and executes the extraction passing the
   #input file through STDIN, and reading the results through STDOUT.
   class Extractor
-    JAR_VERSION="0.15.0"
+    JAR_VERSION="0.15.1"
     DEFAULT_PATH = File.dirname(__FILE__) + "/../../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
     BUFFER_SIZE=250000 # 1/4 a megabyte
 
