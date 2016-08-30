@@ -16,6 +16,8 @@ begin
     gemspec.email = "stuart.owen@manchester.ac.uk"
     gemspec.homepage = "http://github.com/myGrid/simple-spreadsheet-extractor-gem"
     gemspec.authors = ["Stuart Owen","Finn Bacall", "Quyen Nguyen"]
+    gemspec.license = "BSD-3-Clause" # https://spdx.org/licenses/BSD-3-Clause.html#licenseText
+
 
     gemspec.has_rdoc = true
     gemspec.files.include %w(jars)
