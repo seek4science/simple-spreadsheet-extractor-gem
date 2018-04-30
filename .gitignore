@@ -2,4 +2,5 @@
 .project
 .loadpath
 .idea/
+Gemfile.lock
 pkg/
