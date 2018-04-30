@@ -1,8 +1,6 @@
-require 'test/unit'
-require 'simple-spreadsheet-extractor'
-require 'libxml'
+require 'test_helper'
 
-class TestExtraction < Test::Unit::TestCase
+class ExtractionTest < Minitest::Test
   
   SCHEMA_FILE_PATH = File.dirname(__FILE__) + "/../doc/schema-v1.xsd"
   
@@ -32,7 +30,7 @@ class TestExtraction < Test::Unit::TestCase
   def test_failure
     test_sheet = File.dirname(__FILE__) + "/files/not-a-spreadsheet.xls"
     f=open(test_sheet,"rb")
-    assert_raise SysMODB::SpreadsheetExtractionException do
+    assert_raises SysMODB::SpreadsheetExtractionException do
       spreadsheet_to_xml(f)
     end
   end
