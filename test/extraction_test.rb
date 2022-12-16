@@ -13,6 +13,12 @@ class ExtractionTest < Minitest::Test
     xml = spreadsheet_to_xml(io)
     validate_against_schema(xml)
   end
+
+  def test_from_file_path_string
+    test_sheet_path = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
+    xml = spreadsheet_to_xml(test_sheet_path)
+    validate_against_schema(xml)
+  end
   
   def test_validate_xml
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
@@ -73,6 +79,19 @@ class ExtractionTest < Minitest::Test
     #try sheet as a string
     f=open(test_sheet,"rb")
     csv = spreadsheet_to_csv(f,"2")
+    assert_equal expected,csv
+  end
+
+  def test_csv_output_from_filepath
+    test_sheet_path = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
+    expected_file = File.dirname(__FILE__) + "/files/test-csv-output1.csv"
+    expected = open(expected_file,"rb").read.strip
+
+    csv = spreadsheet_to_csv(test_sheet_path,2)
+    assert_equal expected,csv
+
+    #try sheet as a string
+    csv = spreadsheet_to_csv(test_sheet_path,"2")
     assert_equal expected,csv
   end
 

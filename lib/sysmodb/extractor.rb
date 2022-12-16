@@ -18,21 +18,40 @@ module SysMODB
       end
     end
 
+    # can be an IO object or a file path
     def spreadsheet_to_xml(spreadsheet_data)
-      read_with_open4 spreadsheet_data,"xml"
+      if spreadsheet_data.kind_of?(IO) || spreadsheet_data.kind_of?(StringIO)
+        Tempfile.create('spreadsheet-extraction') do |f|
+          f.write(spreadsheet_data.read)
+          f.flush
+          read_with_open4 f.path,"xml"
+        end
+      elsif spreadsheet_data.is_a?(String)
+        read_with_open4 spreadsheet_data,"xml"
+      end
     end
 
+    # can be an IO object or a file path
     def spreadsheet_to_csv(spreadsheet_data,sheet=1,trim=false)
-      read_with_open4 spreadsheet_data,"csv",sheet,trim
+      if spreadsheet_data.kind_of?(IO) || spreadsheet_data.kind_of?(StringIO)
+        Tempfile.create('spreadsheet-extraction') do |f|
+          f.write(spreadsheet_data.read)
+          f.flush
+          read_with_open4 f.path,"csv",sheet,trim
+        end
+      elsif spreadsheet_data.is_a?(String)
+        read_with_open4 spreadsheet_data,"csv",sheet,trim
+      end
     end
 
     private
 
-    def spreadsheet_extractor_command(format="xml",sheet=nil,trim=false)
+    def spreadsheet_extractor_command(filepath, format="xml",sheet=nil,trim=false)
       command = "java -Xmx#{@memory_allocation} -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
       command +=  " -o #{format}"
       command += " -s #{sheet}" if sheet
       command += " -t" if trim
+      command += " < #{filepath}"
       command
     end
 
@@ -40,15 +59,11 @@ module SysMODB
       !(RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/).nil?
     end
 
-    def read_with_open4(spreadsheet_data,format="xml",sheet=nil,trim=false)
+    def read_with_open4(filepath,format="xml",sheet=nil,trim=false)
       output = ""
       err_message = ""
-      command = spreadsheet_extractor_command format,sheet,trim
+      command = spreadsheet_extractor_command filepath, format,sheet,trim
       status = Open4.popen4(command) do |_pid, stdin, stdout, stderr|
-        while ((line = spreadsheet_data.gets(BUFFER_SIZE)) != nil) do
-          stdin << line
-        end
-        stdin.close
 
         while ((line = stdout.gets(BUFFER_SIZE)) != nil) do
           output << line
