@@ -1,7 +1,7 @@
 = Simple Spreadsheet Extractor
 
 Authors::    Stuart Owen, Finn Bacall
-Version::    0.15.0
+Version::    0.17.0
 Contact::    mailto:stuart.owen@manchester.ac.uk
 Licence::    BSD (See LICENCE or http://www.opensource.org/licenses/bsd-license.php)
 Copyright::  (c) 2010-2015 The University of Manchester, UK
@@ -23,7 +23,7 @@ This is a simple tool developed for use within SysMO-DB[http://www.sysmo-db.org]
 
 == Installation
 
-Java 1.7 (JRE) is required.
+Java 8 or above (JRE) is required.
 
   gem install simple-spreadsheet-extractor
 
@@ -34,6 +34,7 @@ Java 1.7 (JRE) is required.
 * require 'simple-spreadsheet-extractor'
 * include the module SysMODB::SpreadsheetExtractor
 * pass an IO object to the method spreedsheet_to_xml which responds with the XML for the contents of the spreadsheet. Alternatively use spreadsheet_to_csv for CSV.
+  * you can now also pass in the filepath to the Excel file instead of an IO object
 * if something goes wrong with the extraction then a SysMODB::SpreadsheetExtractionException will be thrown
 * by default the JVM is allocated 512M of memory, you can override this by passing a string as the last argument. This will be passed to -Xmx in the java command.
   

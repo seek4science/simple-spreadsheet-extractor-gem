@@ -40,7 +40,7 @@ class ExtractionTest < Minitest::Test
     err = assert_raises SysMODB::SpreadsheetExtractionException do
       spreadsheet_to_xml(f)
     end
-    assert_match /Invaild format reading data/, err.message
+    assert_match(/Invaild format reading data/, err.message)
   end
 
   def test_problem_with_dv
