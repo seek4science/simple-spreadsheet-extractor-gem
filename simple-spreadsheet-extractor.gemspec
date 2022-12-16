@@ -19,12 +19,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency('libxml-ruby', ['> 2.8'])
-  spec.add_dependency('terrapin', '~>0.6')
+  spec.add_dependency('libxml-ruby', '~> 2.9')
+  spec.add_dependency('terrapin', '~> 0.6')
 
-  spec.add_development_dependency('rubocop')
+  spec.add_development_dependency('rubocop','~> 1.25')
   spec.add_development_dependency('rubycritic')
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'minitest'
+  spec.add_development_dependency('bundler','~> 2.3')
+
+  spec.add_development_dependency('rake')
+  spec.add_development_dependency('minitest','~>5.14')
 end
