@@ -1,4 +1,3 @@
-
 require 'sysmodb/extractor'
 
 module SysMODB
@@ -8,7 +7,6 @@ module SysMODB
   #   simple_spreadsheet_to_xml to extract to an xml format (see README and schema in doc/schema-v1.xsd)
   #   simple_spreadhseet_to_csv to extract to CSV format for a single sheet
   module SpreadsheetExtractor
-
     # :call-seq:
     #   spreadsheet_to_xml(spreadsheet_data) -> String
     #   spreadsheet_to_xml(spreadsheet_data, memory_allocation) -> String
