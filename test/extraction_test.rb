@@ -11,6 +11,7 @@ class ExtractionTest < Minitest::Test
     contents = open(test_sheet, "rb") {|io| io.read }
     io=StringIO.new contents
     xml = spreadsheet_to_xml(io)
+    validate_against_schema(xml)
   end
   
   def test_validate_xml
@@ -75,21 +76,12 @@ class ExtractionTest < Minitest::Test
     assert_equal expected,csv
   end
 
-#  def test_csv_output_trimmed
-#    test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
-#    expected_file = File.dirname(__FILE__) + "/files/test-csv-output1-trimmed.csv"
-#    expected = open(expected_file,"rb").read
-#
-#    f=open(test_sheet,"rb")
-#    csv = spreadsheet_to_csv(f,2,true)
-#    assert_equal expected,csv
-#  end
-
   def test_for_segfault
     test_sheet = File.dirname(__FILE__) + "/files/test-spreadsheet.xls"
     5.times do |x|
       f=open(test_sheet,"rb")
       xml = spreadsheet_to_xml(f)
+      validate_against_schema(xml)
     end
     true
   end
