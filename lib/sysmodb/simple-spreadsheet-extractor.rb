@@ -11,7 +11,7 @@ module SysMODB
     #   spreadsheet_to_xml(spreadsheet_data) -> String
     #   spreadsheet_to_xml(spreadsheet_data, memory_allocation) -> String
     #
-    # reads the incoming data from an IO object and returns the generated XML.
+    # reads the incoming data from an IO object or path to a file and returns the generated XML.
     # it is extracted using java, and the default memory allocation is 512M (passed to -Xmx) this can
     # be changed by passing an option final parameter memory_allocation
     def spreadsheet_to_xml(spreadsheet_data, memory_allocation = DEFAULT_MEMORY_ALLOCATION)
@@ -24,7 +24,7 @@ module SysMODB
     #   spreadsheet_to_csv(spreadsheet_data, sheet, trim) -> String
     #   spreadsheet_to_csv(spreadsheet_data, sheet, trim, memory_allocation) -> String
     #
-    # reads the incoming data from an IO object and returns the generated CSV.
+    # reads the incoming data from an IO object or path to a file and returns the generated CSV.
     # only 1 sheet is processed, which by default it the first sheet.
     # if trim is set to true, proceeding or trailing cells will be removed whilst keeping the csv uniform.
     # it is extracted using java, and the default memory allocation is 512M (passed to -Xmx) this can
