@@ -1,27 +1,25 @@
-require 'open4'
+require 'terrapin'
 
 module SysMODB
   # Exception that is thrown when a problem occurs during the extraction
   class SpreadsheetExtractionException < Exception; end
 
-  # handles the delegation to java, and executes the extraction passing the
-  # input file through STDIN, and reading the results through STDOUT.
+  # handles the delegation to java
   class Extractor
     JAR_VERSION = '0.16.0'.freeze
     DEFAULT_PATH = File.dirname(__FILE__) + "/../../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
-    BUFFER_SIZE = 250_000 # 1/4 a megabyte
 
     def initialize(memory_allocation)
       @memory_allocation = memory_allocation
       raise Exception, 'Windows is not currently supported' if is_windows?
     end
 
-    # can be an IO object or a file path
+    # spreadsheet_data can be an IO like object or the path to a file
     def spreadsheet_to_xml(spreadsheet_data)
       spreadsheet_to_requested_format(spreadsheet_data, 'xml')
     end
 
-    # can be an IO object or a file path
+    # spreadsheet_data can be an IO like object or the path to a file
     def spreadsheet_to_csv(spreadsheet_data, sheet = 1, trim = false)
       spreadsheet_to_requested_format(spreadsheet_data, 'csv', sheet, trim)
     end
@@ -33,10 +31,10 @@ module SysMODB
         Tempfile.create('spreadsheet-extraction') do |f|
           f.write(spreadsheet_data.read)
           f.flush
-          read_with_open4 f.path, format, sheet, trim
+          execute_command_line f.path, format, sheet, trim
         end
       elsif spreadsheet_data.is_a?(String)
-        read_with_open4 spreadsheet_data, format, sheet, trim
+        execute_command_line spreadsheet_data, format, sheet, trim
       end
     end
 
@@ -53,25 +51,14 @@ module SysMODB
       !(RUBY_PLATFORM =~ /mswin32/ || RUBY_PLATFORM =~ /mingw32/).nil?
     end
 
-    def read_with_open4(filepath, format = 'xml', sheet = nil, trim = false)
-      output = ''
-      err_message = ''
+    def execute_command_line(filepath, format = 'xml', sheet = nil, trim = false)
       command = spreadsheet_extractor_command filepath, format, sheet, trim
-      status = Open4.popen4(command) do |_pid, _stdin, stdout, stderr|
-        while (line = stdout.gets(BUFFER_SIZE)) != nil
-          output << line
-        end
-        stdout.close
-
-        until (line = stderr.gets((BUFFER_SIZE))).nil?
-          err_message << line
-        end
-        stderr.close
+      begin
+        Terrapin::CommandLine.new(command).run.strip
+      rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
+        raise SpreadsheetExtractionException, e.message
       end
-
-      raise SpreadsheetExtractionException, err_message if status.to_i != 0
-
-      output.strip
     end
+
   end
 end

@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency('libxml-ruby', ['> 2.8'])
-  spec.add_dependency('open4', ['1.3.0'])
+  spec.add_dependency('terrapin', '~>0.6')
 
   spec.add_development_dependency('rubocop')
   spec.add_development_dependency('rubycritic')

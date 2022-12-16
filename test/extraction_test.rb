@@ -37,9 +37,10 @@ class ExtractionTest < Minitest::Test
   def test_failure
     test_sheet = File.dirname(__FILE__) + "/files/not-a-spreadsheet.xls"
     f=open(test_sheet,"rb")
-    assert_raises SysMODB::SpreadsheetExtractionException do
+    err = assert_raises SysMODB::SpreadsheetExtractionException do
       spreadsheet_to_xml(f)
     end
+    assert_match /Invaild format reading data/, err.message
   end
 
   def test_problem_with_dv
