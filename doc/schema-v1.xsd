@@ -93,9 +93,9 @@
 			<xsd:element name="row" type="Row" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xsd:sequence>
-		<xsd:attribute name="first_row" type="xsd:positiveInteger"
+		<xsd:attribute name="first_row" type="xsd:nonNegativeInteger"
 			use="required"></xsd:attribute>
-		<xsd:attribute name="last_row" type="xsd:positiveInteger"
+		<xsd:attribute name="last_row" type="xsd:nonNegativeInteger"
 			use="required"></xsd:attribute>
 	</xsd:complexType>
 	

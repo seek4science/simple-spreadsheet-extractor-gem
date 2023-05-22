@@ -6,7 +6,7 @@ module SysMODB
 
   # handles the delegation to java
   class Extractor
-    JAR_VERSION = '0.16.0'.freeze
+    JAR_VERSION = '0.18.0'.freeze
     DEFAULT_PATH = File.dirname(__FILE__) + "/../../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
 
     def initialize(memory_allocation)
