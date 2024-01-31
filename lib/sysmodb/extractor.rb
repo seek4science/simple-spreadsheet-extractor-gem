@@ -6,7 +6,7 @@ module SysMODB
 
   # handles the delegation to java
   class Extractor
-    JAR_VERSION = '0.18.0'.freeze
+    JAR_VERSION = '0.18.1'.freeze
     DEFAULT_PATH = File.dirname(__FILE__) + "/../../jars/simple-spreadsheet-extractor-#{JAR_VERSION}.jar"
 
     def initialize(memory_allocation)
@@ -54,7 +54,7 @@ module SysMODB
     def execute_command_line(filepath, format = 'xml', sheet = nil, trim = false)
       command = spreadsheet_extractor_command filepath, format, sheet, trim
       begin
-        Terrapin::CommandLine.new(command).run.strip
+        Terrapin::CommandLine.new(command,'').run.strip
       rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
         raise SpreadsheetExtractionException, e.message
       end

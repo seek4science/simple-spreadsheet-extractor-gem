@@ -105,5 +105,13 @@ class ExtractionTest < Minitest::Test
     end
     true
   end
+
+  # error logs should go to stderr and not be included in final output if successful
+  # def test_error_logs_ignored
+  #   test_sheet = File.dirname(__FILE__) + "/files/with-poi-error-logs.xlsx"
+  #   f=open(test_sheet,"rb")
+  #   xml = spreadsheet_to_xml(f)
+  #   validate_against_schema(xml)
+  # end
   
 end
