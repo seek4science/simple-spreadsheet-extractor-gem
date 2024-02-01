@@ -38,13 +38,14 @@ module SysMODB
       end
     end
 
-    def spreadsheet_extractor_command(filepath, format = 'xml', sheet = nil, trim = false)
-      command = "java -Xmx#{@memory_allocation} -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
-      command += " -o #{format}"
-      command += " -s #{sheet}" if sheet
-      command += ' -t' if trim
-      command += " < #{filepath}"
-      command
+    def spreadsheet_extractor_command_line(filepath, format = 'xml', sheet = false, trim = false)
+
+      args  = "-Xmx#{@memory_allocation} -jar #{(defined? SPREADSHEET_EXTRACTOR_JAR_PATH) ? SPREADSHEET_EXTRACTOR_JAR_PATH : DEFAULT_PATH}"
+      args += " -o :format"
+      args += " -s :sheet" if sheet
+      args += ' -t' if trim
+      args += " < :filepath"
+      Terrapin::CommandLine.new("java", args)
     end
 
     def is_windows?
@@ -52,9 +53,9 @@ module SysMODB
     end
 
     def execute_command_line(filepath, format = 'xml', sheet = nil, trim = false)
-      command = spreadsheet_extractor_command filepath, format, sheet, trim
+      command_line = spreadsheet_extractor_command_line filepath, format, !!sheet, trim
       begin
-        Terrapin::CommandLine.new(command,'').run.strip
+        command_line.run(format: format, sheet: sheet, filepath: filepath).strip
       rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
         raise SpreadsheetExtractionException, e.message
       end
