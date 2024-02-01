@@ -45,6 +45,7 @@ module SysMODB
       args += " -s :sheet" if sheet
       args += ' -t' if trim
       args += " < :filepath"
+      args += " 2>:error_log_path"
       Terrapin::CommandLine.new("java", args)
     end
 
@@ -54,10 +55,12 @@ module SysMODB
 
     def execute_command_line(filepath, format = 'xml', sheet = nil, trim = false)
       command_line = spreadsheet_extractor_command_line filepath, format, !!sheet, trim
-      begin
-        command_line.run(format: format, sheet: sheet, filepath: filepath).strip
-      rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
-        raise SpreadsheetExtractionException, e.message
+      Tempfile.create('spreadsheet-extraction-error-log') do |f|
+        begin
+          command_line.run(format: format, sheet: sheet, filepath: filepath, error_log_path: f.path).strip
+        rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
+          raise SpreadsheetExtractionException, f.read
+        end
       end
     end
 
