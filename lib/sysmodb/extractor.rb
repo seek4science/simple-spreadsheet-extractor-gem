@@ -58,7 +58,7 @@ module SysMODB
       Tempfile.create('spreadsheet-extraction-error-log') do |f|
         begin
           command_line.run(format: format, sheet: sheet, filepath: filepath, error_log_path: f.path).strip
-        rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError => e
+        rescue Terrapin::ExitStatusError, Terrapin::CommandNotFoundError
           raise SpreadsheetExtractionException, f.read
         end
       end
